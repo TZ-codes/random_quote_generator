@@ -1,35 +1,29 @@
 // console.log('Connected to server')
 
-const button = document.getElementsByClassName('button');
-const paragraph = document.getElementsByClassName('quote');
+const button = document.getElementById('button');
+const paragraph = document.getElementById('quote');
+const author = document.getElementById('author');
 
 //create a async function that will display the quote
 
 async function getQuote() {
     try { 
-        const response = await fetch('https://type.fit/api/quotes');
-        
-        if (response.ok) {
-            const jsonQuote = await response.json();
-            let randomNum = Math.floor(Math.random() * Object.keys(jsonQuote).length);
-            return jsonQuote[randomNum];
+        const response = await fetch('https://type.fit/api/quotes');    
+        const jsonQuote = await response.json();
+        let randomNum = Math.floor(Math.random() * Object.keys(jsonQuote).length);
+        paragraph.innerHTML = jsonQuote[randomNum].text;
+        button.textContent = 'Get Another Quote';
+        if ( jsonQuote[randomNum].author) {
+            author.innerHTML = '-' + jsonQuote[randomNum].author;
+        } else {
+            author.innerHTML = '-No Author';
         }
     } catch (error) {
         console.log(error);
     }
 };
 
-const showQuote = (event) => {
-    event.innerHTML = getQuote;
-}; 
+button.onclick = getQuote;
 
-const variant = getQuote();
-const text = variant.text;
-const author = variant.author;
-console.log(author);
-console.log(text);
-console.log(typeof variant);
-
-button.onclick = showQuote;
 
 
