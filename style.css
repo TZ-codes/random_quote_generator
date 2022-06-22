@@ -5,7 +5,7 @@
 }
 
 body {
-    background-image: url(/images/fernando-gutierrez-1KKZVPi856g-unsplash.jpg);
+    background-image: url('images/fernando-gutierrez-1KKZVPi856g-unsplash.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     max-width: 100%;
@@ -19,6 +19,7 @@ body {
     color: white;
     margin: 30px;
     padding: 15px;
+    border-radius: 18px;
 }
 
 #quote {
@@ -34,7 +35,8 @@ body {
 
 #button {
     font-family:Verdana, Geneva, Tahoma, sans-serif;
-    background-color: aqua;
+    background-color: peachpuff;
+    border-radius: 8px;
     margin: 15px;
     padding: 10px;
     font-weight: 700;
